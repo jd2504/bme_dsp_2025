@@ -1,6 +1,9 @@
 # helpers for biomedical signal processing, 2025
 
 def grab_file(filename, site_url="https://parralab.org/teaching/biomed-dsp/"):
+    """
+    used in grab_mat() and grab_wav() methods
+    """
     import requests
     import io
 
@@ -16,6 +19,9 @@ def grab_file(filename, site_url="https://parralab.org/teaching/biomed-dsp/"):
 
 
 def grab_mat(mat_file):
+    """
+    returns: matlab file data and metadata
+    """
     from scipy import io as sio
 
     data_stream = grab_file(mat_file)
@@ -26,6 +32,9 @@ def grab_mat(mat_file):
 
 
 def grab_wav(wav_file):
+    """
+    returns: sample rate (fs) and wav file data (data)
+    """
     from scipy import io as sio
 
     audio_bytes = grab_file(wav_file)
@@ -41,11 +50,12 @@ def gaborfir(fc, fs, Q):
     fs:
     Q: quality factor, bw relative to center freq
 
-    implements lucas function: function b=gaborfir(fc,fs,Q)
-        df = fc/Q; % bandwidth in Hz,
-        dt = 1/df;
-        t = (-3*dt*fs:3*dt*fs)'/fs;
-        b = 1/sqrt(pi/2)/fs/dt*exp(-t.^2/2/dt^2).*exp(sqrt(-1)*2*pi*fc*t);
+    implements lucas' MATLAB Gabor function:
+        function b=gaborfir(fc,fs,Q)
+            df = fc/Q; % bandwidth in Hz,
+            dt = 1/df;
+            t = (-3*dt*fs:3*dt*fs)'/fs;
+            b = 1/sqrt(pi/2)/fs/dt*exp(-t.^2/2/dt^2).*exp(sqrt(-1)*2*pi*fc*t);
     """
     df = fc/Q  # bandwidth in Hz
     dt = 1/df  # t const related to gauss env spread
