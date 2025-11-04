@@ -32,3 +32,35 @@ def grab_wav(wav_file):
     fs, data = sio.wavfile.read(audio_bytes)
 
     return fs, data
+
+
+
+def gaborfir(fc, fs, Q):
+    """
+    fc: center freq in Hz
+    fs:
+    Q: quality factor, bw relative to center freq
+
+    implements lucas function: function b=gaborfir(fc,fs,Q)
+        df = fc/Q; % bandwidth in Hz,
+        dt = 1/df;
+        t = (-3*dt*fs:3*dt*fs)'/fs;
+        b = 1/sqrt(pi/2)/fs/dt*exp(-t.^2/2/dt^2).*exp(sqrt(-1)*2*pi*fc*t);
+    """
+    df = fc/Q  # bandwidth in Hz
+    dt = 1/df  # t const related to gauss env spread
+
+    # t = (-3*dt*fs:3*dt*fs)'/fs;
+    t_start = -3 * dt * fs
+    t_end = 3 * dt * fs
+
+    t_idx = np.arange(np.ceil(t_start), np.floor(t_end) + 1)
+    t = t_idx / fs # s
+
+    # b = (1 / sqrt(pi/2) / fs / dt) * exp(-t^2 / (2*dt^2)) * exp(i * 2*pi*fc*t)
+    term1 = 1 / (np.sqrt(np.pi / 2) * fs * dt) # normalization factor?
+    term2 = np.exp(-t**2 / (2 * dt**2)) # gaussian envelope
+    term3 = np.exp(1j * 2 * np.pi * fc * t) # carrier wave
+
+    b = term1 * term2 * term3
+    return b
