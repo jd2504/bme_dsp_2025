@@ -1,5 +1,6 @@
 # Biomedical Signal Processing helpers
 
+```
 import numpy as np
 from scipy import signal, stats
 from matplotlib import pyplot as plt
@@ -14,3 +15,4 @@ repo_path = os.path.join(os.getcwd(), repo_name)
 sys.path.append(repo_path)
 
 import bmedsp_helpers as bme
+```
