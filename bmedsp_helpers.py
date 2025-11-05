@@ -27,6 +27,8 @@ def grab_mat(mat_file):
     data_stream = grab_file(mat_file)
     mat_contents = sio.loadmat(data_stream)
     print(mat_contents.keys())
+    if '__header__' in mat_contents:
+        print(mat_contents['__header__'])
 
     return mat_contents
 
