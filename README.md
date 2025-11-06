@@ -3,11 +3,11 @@ Joel Deerwester
 CCNY BME (Lucas Parra, 2025)
 
 ## Links and resources
-ParraLab, BME DSP [site](https://www.parralab.org/teaching/biomed-dsp/)
-EPFL DSP course [Coursera](https://www.coursera.org/specializations/digital-signal-processing)
-MIT OpenCourseWare [resources](https://ocw.mit.edu/courses/res-6-008-digital-signal-processing-spring-2011/)
-MathWorks CVE [course](https://www.coursera.org/professional-certificates/mathworks-computer-vision-engineer)
-Bruce [text](https://www.amazon.com/Biomedical-Signal-Processing-Modeling/dp/0471345407)
+- ParraLab, BME DSP [site](https://www.parralab.org/teaching/biomed-dsp/)
+- EPFL DSP course [Coursera](https://www.coursera.org/specializations/digital-signal-processing)
+- MIT OpenCourseWare [resources](https://ocw.mit.edu/courses/res-6-008-digital-signal-processing-spring-2011/)
+- MathWorks CVE [course](https://www.coursera.org/professional-certificates/mathworks-computer-vision-engineer)
+- Bruce [text](https://www.amazon.com/Biomedical-Signal-Processing-Modeling/dp/0471345407)
 
 ## A few biomed DSP helper functions
 
