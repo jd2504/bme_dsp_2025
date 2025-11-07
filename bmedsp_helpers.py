@@ -84,6 +84,8 @@ def spacer_and_ylimits(x_orig, spacer_factor=1.1, margin_factor=0.05, min_absolu
       spacer: spacing between series
       ylimits: some buffer added to y-axis limits based on max/min after spacing
     """
+    import numpy as np
+    
     H = 0
     for x in x_orig:
         H = max(H, (np.max(x) - np.min(x)))
