@@ -76,3 +76,26 @@ def gaborfir(fc, fs, Q):
 
     b = term1 * term2 * term3
     return b
+
+
+def spacer_and_ylimits(x_orig, spacer_factor=1.1, margin_factor=0.05, min_absolute_spacer=0.1, min_absolute_margin=0.1):
+    """
+    returns:
+      spacer: spacing between series
+      ylimits: some buffer added to y-axis limits based on max/min after spacing
+    """
+    H = 0
+    for x in x_orig:
+        H = max(H, (np.max(x) - np.min(x)))
+    spacer = H * spacer_factor
+
+    y_shifted = []
+    for i, x in enumerate(x_orig):
+        y_shifted.extend([y + i*spacer for y in x])
+
+    margin = (np.max(y_shifted) - np.min(y_shifted)) * margin_factor
+    ymin = np.min(y_shifted) - margin
+    ymax = np.max(y_shifted) + margin
+    ylimits = (ymin, ymax)
+
+    return spacer, ylimits
