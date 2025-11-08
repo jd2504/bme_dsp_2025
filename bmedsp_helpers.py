@@ -80,6 +80,7 @@ def gaborfir(fc, fs, Q):
 
 def spacer_and_ylimits(x_orig, spacer_factor=1.1, margin_factor=0.05, min_absolute_spacer=0.1, min_absolute_margin=0.1):
     """
+    plots multiple series, evenly spaced plus margins - use without pyplot yticks
     returns:
       spacer: spacing between series
       ylimits: some buffer added to y-axis limits based on max/min after spacing
