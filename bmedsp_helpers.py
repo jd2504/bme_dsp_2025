@@ -45,6 +45,22 @@ def grab_wav(wav_file):
     return fs, data
 
 
+def est_ma_filter(sig_in, sig_out, Q):
+    from scipy.linalg import toeplitz
+    x = sig_in
+    y = sig_out
+    n_coeffs = Q+1
+
+    # avoid edge artifacts
+    y_vec = y[Q:]
+    col = x[Q:]
+    row = x[Q::-1][:n_coeffs]
+
+    X = toeplitz(col, row)
+    b_hat, _, _, _ = np.linalg.lstsq(X, y_vec)
+
+    return b_hat
+
 
 def gaborfir(fc, fs, Q):
     """
