@@ -3,8 +3,7 @@ Joel Deerwester
 CCNY BME (Lucas Parra, 2025)
 
 ## Links and resources
-- ParraLab, BME DSP [site](https://www.parralab.org/teaching/biomed-dsp/)
-- ParraLab, BME 2023 [video lectures](https://www.parralab.org/teaching/biomed-dsp/videos/)
+- ParraLab, BME DSP [site](https://www.parralab.org/teaching/biomed-dsp/) & [video lectures](https://www.parralab.org/teaching/biomed-dsp/videos/)
 - EPFL DSP course [Coursera](https://www.coursera.org/specializations/digital-signal-processing)
 - MIT OpenCourseWare [resources](https://ocw.mit.edu/courses/res-6-008-digital-signal-processing-spring-2011/)
 - MathWorks CVE [course](https://www.coursera.org/professional-certificates/mathworks-computer-vision-engineer)
