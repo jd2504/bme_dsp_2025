@@ -1,5 +1,8 @@
 # helpers for biomedical signal processing, 2025
 
+#
+# load files
+#
 def grab_file(filename, site_url="https://parralab.org/teaching/biomed-dsp/"):
     """
     used in grab_mat() and grab_wav() methods
@@ -45,6 +48,9 @@ def grab_wav(wav_file):
     return fs, data
 
 
+#
+# filters
+#
 def est_ma_filter(sig_in, sig_out, Q):
     from scipy.linalg import toeplitz
     x = sig_in
@@ -92,6 +98,27 @@ def gaborfir(fc, fs, Q):
 
     b = term1 * term2 * term3
     return b
+
+
+#
+# plotting
+#
+def plt_isi_pdf(x):
+    isis = np.diff(np.where(x)[0])
+    m = np.mean(isis)
+    x_isi = np.linspace(0, np.max(isis), 500)
+
+    def overlay_expon(m=m):
+        from scipy.stats import expon
+        return expon.pdf(x_isi, scale=m)
+    pdf = overlay_expon()
+
+    plt.figure(figsize=(8, 4))
+    plt.hist(isis, bins=100, density=True, alpha=0.7)
+    plt.plot(x_isi, pdf)
+    plt.axis('off')
+    plt.xlim(0,)
+    plt.show()
 
 
 def spacer_and_ylimits(x_orig, spacer_factor=1.1, margin_factor=0.05, min_absolute_spacer=0.1, min_absolute_margin=0.1):
